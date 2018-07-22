@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+    <title>TweetTweet - Sign Up</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for the signup template. -->
+    <link href="{{ url_for('static', filename='signup-styles.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <form class="form-signin" method="POST">
+        <div class="text-center mb-4">
+            <img class="mb-4" src="{{ url_for('static', filename='tweettweet-icon.png') }}" alt="" width="75" height="75">
+            <h1 class="h3 mb-3">TweetTweet</h1>
+            <p>A simple Twitter-like web application, for posting and reposting tweets from fellow users around the world.</p>
+            {% if response %}
+            <div style="line-height: 6px;">
+            {% for line in response %}
+                <p style="font-size: 12px; color: red;">{{ line }}</p>
+            {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="form-label-group">
+            <input name="first-name" type="text" id="inputFirstName" class="form-control" placeholder="First Name" required autofocus>
+            <label for="inputFirstName">First Name</label>
+        </div>
+
+        <div class="form-label-group">
+            <input name="last-name" type="text" id="inputLastName" class="form-control" placeholder="Last Name" required>
+            <label for="inputLastName">Last Name</label>
+        </div>
+
+        <div class="form-label-group">
+            <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Username" required>
+            <label for="inputEmail">Username</label>
+        </div>
+
+        <div class="form-label-group">
+            <input name="password1" type="password" id="inputPassword1" class="form-control" placeholder="Password" required>
+            <label for="inputPassword1">Password</label>
+        </div>
+
+        <div class="form-label-group">
+            <input name="password2" type="password" id="inputPassword2" class="form-control" placeholder="Password" required>
+            <label for="inputPassword2">Password</label>
+        </div>
+
+        <div class="checkbox mb-3 text-center">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+
+        <button class="btn btn-lg btn-success btn-block" type="submit">Sign Up</button>
+
+        <div class="login-button">
+            <div class="text-center">
+                    <label>Already have an account?</label>
+            </div>
+            <a href="{{ url_for('login.show_login') }}">
+                <button class="btn btn-lg btn-info btn-block" type="button">Log In</button>
+            </a>
+        </div>
+
+        <p class="mt-5 mb-3 text-muted text-center">Copyright &copy; Matthew Muccio 2018</p>
+    </form>
+</body>
+
+</html>
